@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chainlink Privacy Hub</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🛡️</div>
+                    <div class="logo-text">
+                        <h1>Privacy Hub</h1>
+                        <p>Web3 & Privacy Protection</p>
+                    </div>
+                </div>
+                <div class="status-indicator" id="statusIndicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Monitoring</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" data-tab="chainlink">
+                <span class="tab-icon">🔗</span>
+                <span>MetaMask</span>
+            </button>
+            <button class="tab-btn" data-tab="privacy">
+                <span class="tab-icon">👁️</span>
+                <span>Privacy</span>
+            </button>
+            <button class="tab-btn" data-tab="cookies">
+                <span class="tab-icon">🍪</span>
+                <span>Cookies</span>
+            </button>
+            <button class="tab-btn" data-tab="trackers">
+                <span class="tab-icon">⚠️</span>
+                <span>Trackers</span>
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- MetaMask Tab -->
+            <div id="chainlink-tab" class="tab-pane active">
+                <div class="section">
+                    <div class="metamask-switch-container">
+                        <div class="metamask-icon">🦊</div>
+                        <h3>Connect to MetaMask</h3>
+                        <p>Switch to our dedicated MetaMask connection page for the best experience</p>
+                        <button id="switchToMetaMaskBtn" class="btn btn-primary metamask-switch-btn">
+                            🚀 Switch to MetaMask Page
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy Tab -->
+            <div id="privacy-tab" class="tab-pane">
+                <div class="section">
+                    <h3>Privacy Score</h3>
+                    <div class="privacy-score" id="privacyScore">
+                        <div class="score-circle">
+                            <span class="score-value" id="scoreValue">75</span>
+                            <span class="score-max">/100</span>
+                        </div>
+                        <div class="score-label" id="scoreLabel">Good</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Active Threats</h3>
+                    <div class="threats-list" id="threatsList">
+                        <!-- Threats will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cookies Tab -->
+            <div id="cookies-tab" class="tab-pane">
+                <div class="section">
+                    <div class="section-header">
+                        <h3>Cookie Manager</h3>
+                        <div class="action-buttons">
+                            <button id="scanCookiesBtn" class="btn btn-secondary">Scan</button>
+                            <button id="deleteHarmfulBtn" class="btn btn-danger">Delete Harmful</button>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalCookies">0</div>
+                            <div class="stat-label">Total</div>
+                        </div>
+                        <div class="stat-card harmful">
+                            <div class="stat-value" id="harmfulCookies">0</div>
+                            <div class="stat-label">Harmful</div>
+                        </div>
+                        <div class="stat-card tracking">
+                            <div class="stat-value" id="trackingCookies">0</div>
+                            <div class="stat-label">Tracking</div>
+                        </div>
+                    </div>
+
+                    <div class="cookies-list" id="cookiesList">
+                        <!-- Cookies will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trackers Tab -->
+            <div id="trackers-tab" class="tab-pane">
+                <div class="section">
+                    <div class="section-header">
+                        <h3>Tracker Monitor</h3>
+                        <div class="action-buttons">
+                            <button id="toggleMonitoringBtn" class="btn btn-primary">Start Monitoring</button>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalTrackers">0</div>
+                            <div class="stat-label">Detected</div>
+                        </div>
+                        <div class="stat-card blocked">
+                            <div class="stat-value" id="blockedTrackers">0</div>
+                            <div class="stat-label">Blocked</div>
+                        </div>
+                        <div class="stat-card high-risk">
+                            <div class="stat-value" id="highRiskTrackers">0</div>
+                            <div class="stat-label">High Risk</div>
+                        </div>
+                    </div>
+
+                    <div class="trackers-list" id="trackersList">
+                        <!-- Trackers will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

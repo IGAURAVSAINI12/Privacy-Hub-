@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chainlink MetaMask Integration Test</title>
+</head>
+<body>
+    <h1>Chainlink MetaMask Integration</h1>
+    
+    <div>
+        <button onclick="connectMetaMask()">Connect MetaMask</button>
+        <button onclick="disconnectMetaMask()">Disconnect</button>
+        <button onclick="checkStatus()">Check Status</button>
+    </div>
+    
+    <div>
+        <h3>Get Prices:</h3>
+        <button onclick="getETHPrice()">Get ETH/USD Price</button>
+        <button onclick="getAllPrices()">Get All Prices</button>
+    </div>
+    
+    <div id="output"></div>
+
+    <script>
+        function log(message) {
+            document.getElementById('output').innerHTML += '<p>' + JSON.stringify(message, null, 2) + '</p>';
+        }
+
+        async function checkStatus() {
+            const status = getConnectionStatus();
+            log('Connection Status: ' + JSON.stringify(status));
+        }
+
+        async function getETHPrice() {
+            try {
+                // ETH/USD on Ethereum mainnet
+                const price = await getChainlinkPrice('0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419');
+                log('ETH Price: ' + JSON.stringify(price));
+            } catch (error) {
+                log('Error: ' + error.message);
+            }
+        }
+
+        async function getAllPrices() {
+            try {
+                const prices = await getAllChainlinkPrices();
+                log('All Prices: ' + JSON.stringify(prices));
+            } catch (error) {
+                log('Error: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
